@@ -1,0 +1,45 @@
+.forum-main{
+    background-image: url('https://visit.gent.be/sites/default/files/styles/index_mobile/public/media/img/2022-01/VisitReeks133-DT012846.jpg?h=8e0fe7db&itok=hK-iRAMs');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.forum-main input{
+    width: 300px;
+    height: 30px;
+    margin: 4px;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+.forum-main select{
+    width: 310px;
+    height: 35px;
+    margin: 4px;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+.forum-main button{
+    margin-top: 5px;
+    width: 100px;
+    height: 30px;
+    border-radius: 7px;
+    margin-left: 5px;
+}
+.forum-main h1{
+    color: #fff;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+#message{
+    margin-left: 5px;
+    padding-top: 10px;
+    color: #fff;
+}
+#signInIcon{
+    color: #fff;
+    font-size: 30px;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sign-in.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Cinema Forum</title>
+</head>
+<body>
+    <div class="forum-main">
+        <i id="signInIcon" class="fa-solid fa-arrow-left signInIcon"></i>
+        <h1>Bilet üçün rezervasiya</h1>
+        <form id="cinemaForm">
+            <select id="movie">
+                <option id="width" value="">Film</option>
+                <option value="movie1">Movie 1</option>
+                <option value="movie2">Movie 2</option>
+                <option value="movie2">Movie 3</option>
+                <option value="movie2">Movie 4</option>
+                <option value="movie2">Movie 5</option>
+                <option value="movie2">Movie 6</option>
+                <option value="movie2">Movie 7</option>
+            </select><br>
+    
+            <select id="location">
+                <option value="">Məkan</option>
+                <option value="location1">Location 1</option>
+                <option value="location2">Location 2</option>
+            </select><br>
+    
+            <input type="date" id="date"><br>
+    
+            <select id="time">
+                <option value="">Seans</option>
+                <option value="9:00">9:00</option>
+                <option value="13:00">13:00</option>
+                <option value="17:00">17:00</option>
+            </select><br>
+    
+            
+            <input type="number" id="quantity" min="1" placeholder="Bilet sayı"><br>
+    
+            <input type="text" id="seats" placeholder="Yerlər:A1,B3"><br>
+    
+            <button type="button" onclick="makeReservation()">Bilet al</button>
+            <div id="message"></div>
+        </form>
+    </div>
+
+
+    <script>
+        function generateLocationOptions() {
+            var movie = document.getElementById("movie").value;
+            var locationSelect = document.getElementById("location");
+            // Clear location options
+            locationSelect.innerHTML = "<option value=''>Select a location</option>";
+            // Simulated location options (replace with actual data)
+            var locations = {
+                movie1: ["Location 1", "Location 2"],
+                movie2: ["Location 3", "Location 4"]
+            };
+            locations[movie].forEach(function(location) {
+                var option = document.createElement("option");
+                option.value = location;
+                option.textContent = location;
+                locationSelect.appendChild(option);
+            });
+        }
+
+        // Call generateLocationOptions function whenever movie changes
+        document.getElementById("movie").addEventListener("change", generateLocationOptions);
+
+        function generateTimeOptions() {
+            var movie = document.getElementById("movie").value;
+            var timeSelect = document.getElementById("time");
+            // Clear time options
+            timeSelect.innerHTML = "<option value=''>Select a time</option>";
+            // Simulated time options (replace with actual data)
+            var times = {
+                movie1: ["09:00", "13:00", "17:00"],
+                movie2: ["10:00", "14:00", "18:00"]
+            };
+            times[movie].forEach(function(time) {
+                var option = document.createElement("option");
+                option.value = time;
+                option.textContent = time;
+                timeSelect.appendChild(option);
+            });
+        }
+
+        // Call generateTimeOptions function whenever movie changes
+        document.getElementById("movie").addEventListener("change", generateTimeOptions);
+
+        function makeReservation() {
+            var movie = document.getElementById("movie").value;
+            var location = document.getElementById("location").value;
+            var date = document.getElementById("date").value;
+            var time = document.getElementById("time").value;
+            var quantity = document.getElementById("quantity").value;
+            var seats = document.getElementById("seats").value;
+
+            var messageDiv = document.getElementById("message");
+
+            if (movie === "" || location === "" || date === "" || time === "" || quantity === "" || seats === "") {
+                messageDiv.innerText = "Bos qalan hisseleri doldurun";
+            } else {
+                // Here you can implement the reservation process, e.g., send data to server
+                messageDiv.innerText = "Bilet aldiniz";
+                // Reset form inputs
+                document.getElementById("cinemaForm").reset();
+            }
+        }
+
+        // Fonksiyonları tanımladık, şimdi sign-in formunu gizleme ve gösterme işlemlerini yapalım
+        function openSignInPage() {
+            // Yeni bir pencere aç
+            var signInWindow = window.open("sign-in.html", "_blank", "width=1000, height=800");
+        }
+
+        // Sign-in iconuna tıklandığında
+        document.getElementById("signInIcon").addEventListener("click", function(event){
+            event.preventDefault(); // Sayfanın yenilenmesini engelle
+            window.close(); // Açık olan sign-in penceresini kapat
+        });
+    </script>
+</body>
+</html>
